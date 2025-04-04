@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ye's Scriptures</title>
+    <link rel="shortcut icon" href="/images/kanye.png" type="image/x-icon">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="outer-container">
+        <h1>KING YE's SCRIPTURES</h1>
+        <!-- imp include -->
+        <div class="inner-container">
+            <div class="quote-container">
+                <p class="quote-text"> <%= quote %> </p>
+                <p class="by-kanye">~Kanye West</p>
+            </div>
+            <!-- liked quotes button -->
+            <div class="action-container">
+                <button type="button" id="liked-quote-btn" onclick="window.location.href='/liked-quotes'">
+                    <img src="/images/heart.png" alt="heart image">liked quotes
+                </button>
+                <div class="response-container">
+                    <!-- Dislike button -->
+                    <button type="button" name="action" value="dislike" class="heartbreak-container">
+                        <img src="/images/broken-heart.png" alt="broken heart image">
+                    </button>
+                    
+                    <!-- Like button -->
+                    <button type="button" name="action" value="like" class="heart-container" id="like-btn">
+                        <img src="/images/heart.png" alt="heart image">
+                    </button>
+                    
+                    <!-- Hidden input for the quote -->
+                    <input type="hidden" name="quote" value="<%= quote %>">
+                </div>                
+            </div>
+        </div>
+        <!-- footer -->
+        <p class="footer">quotes from <a href="https://kanye.rest/" target="_blank">kanye.rest</a></p>
+    </div>
+    <script src="/js/hover.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up the like button (heart container)
+            document.querySelector('.heart-container').addEventListener('click', function() {
+                // Get current quote from the page
+                const currentQuote = document.querySelector('.quote-text').innerText.trim();
+                
+                // Get existing liked quotes from localStorage
+                let likedQuotes = JSON.parse(localStorage.getItem('likedQuotes') || '[]');
+                
+                // Add the current quote if it's not already there
+                if (!likedQuotes.includes(currentQuote)) {
+                    likedQuotes.push(currentQuote);
+                    // Save back to localStorage
+                    localStorage.setItem('likedQuotes', JSON.stringify(likedQuotes));
+                    window.location.href = '/';
+                } else {
+                    alert('You already liked this quote!');
+                }
+            });
+            document.querySelector('.heartbreak-container').addEventListener('click', function(){
+                window.location.href = '/';
+            })
+            
+            // Set up the liked quotes button
+            document.getElementById('liked-quote-btn').addEventListener('click', function() {
+                // Navigate to the liked quotes page
+                window.location.href = '/liked-quotes';
+            });
+        });
+    </script>    
+</body>
+</html>

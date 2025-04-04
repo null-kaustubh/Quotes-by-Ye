@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liked quotes</title>
+    <link rel="shortcut icon" href="/images/kanye.png" type="image/x-icon">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="outer-container">
+        <h1 class="page-title">Liked Quotes</h1>
+        <hr>
+        
+        <div id="liked-quotes-container">
+            <!-- This will be filled by JavaScript -->
+        </div>
+        
+        <button class="back-btn" onclick="window.location.href='/'">Back to Quotes</button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get liked quotes from localStorage
+            let likedQuotes = JSON.parse(localStorage.getItem('likedQuotes') || '[]');
+            const container = document.getElementById('liked-quotes-container');
+            
+            function renderQuotes() {
+                if (likedQuotes.length === 0) {
+                    container.innerHTML = '<p>you have not liked any quotes yet!! <a href="/">click here</a> to browse quotes</p>';
+                } else {
+                    // Create a list of the liked quotes with delete buttons
+                    let html = '<ul class="quotes-list">';
+                    likedQuotes.forEach((quote, index) => {
+                        html += `
+                        <li class="quote-item">
+                            <p class="quote-text">${quote}</p><button class="delete-btn" onclick="unsaveQuote(${index})"><img src="/images/icons8-delete-24.png" class="delete-icon" alt="delete icon"></button>
+                        </li>`;
+                    });
+                    html += '</ul>';
+                    container.innerHTML = html;
+                }
+            }
+            
+            // Initial render
+            renderQuotes();
+            window.unsaveQuote = function(index) {
+                // Remove the quote at the specified index
+                likedQuotes.splice(index, 1);
+                
+                // Save the updated array back to localStorage
+                localStorage.setItem('likedQuotes', JSON.stringify(likedQuotes));
+                
+                // Re-render the quotes list
+                renderQuotes();
+            };
+        });
+    </script>
+</body>
+</html>

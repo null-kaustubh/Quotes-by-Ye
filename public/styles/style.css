@@ -1,0 +1,227 @@
+body{
+    font-family: "Geist", sans-serif;
+    background-color: #0C0A09;
+    color: #FFFFFF;
+    border-width: 25%;
+}
+
+/* form styling */
+.action-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 619px;
+    position: relative;
+}
+#liked-quote-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 223px;
+    height: 50px;
+    background-color: #0C0A09;
+    color: #FFFFFF;
+    border: 2px solid #292524;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: normal;
+    cursor: pointer;
+}
+#liked-quote-btn img{
+    filter: brightness(100);
+}
+.heartbreak-container{
+    width: 130px;
+    height: 50px;
+    background-color: #0C0A09;
+    color: #FFFFFF;
+    border: 2px solid #292524;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.heartbreak-container img{
+    filter: grayscale(100%);
+}
+.heart-container{
+    width: 130px;
+    height: 50px;
+    background-color: #0C0A09;
+    color: #FFFFFF;
+    border: 2px solid #292524;
+    border-radius: 20px;
+    cursor: pointer;
+}
+img{
+    width: 30px;
+    height: 30px;
+}
+/* form styling */
+
+/* quote card effect */
+.quote-container::before{
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
+    border-radius: inherit;
+    content: "";
+    height: 100%;
+    left: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    transition: opacity 500ms;
+    width: 100%;
+    z-index: 2;
+}
+.quote-container:hover::before{
+    opacity: 1;
+}
+/* quote card effect */
+
+/* gradient h1 */
+h1{
+    font-size: 70px;
+    font-weight: bold;
+    background-image: linear-gradient(178deg, #fff 40%, hsl(0, 31%, 5%) 100%);
+    background-clip: text;
+    color: transparent;
+}
+/* gradient h1 */
+
+/* quote container */
+.quote-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 1000px;
+    height: 250px;
+    background-color: #0C0A09;
+    color: #FFFFFF;
+    border: 2px solid #292524;
+    border-radius: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-bottom: 15px;
+    position: relative;
+}
+.quote-text{
+    font-size: 20px;
+}
+.by-kanye{
+    font-weight: lighter;
+}
+/* quote container */
+
+/* main styling */
+.outer-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.inner-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+/* main styling */
+
+/* button effect */
+.action-container button {
+    background-color: transparent;
+    color: white;
+    transition: background-color 0.3s;
+}
+.action-container button:hover {
+    background-color: #292524;
+}
+#liked-quote-btn {
+    background-color: transparent;
+    color: white;
+    transition: background-color 0.3s;
+}
+#liked-quote-btn:hover {
+    background-color: #292524;
+}
+/* button effect */
+
+/* footer */
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 25px;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+a{
+    text-decoration: underline;
+    color: #FFFFFF;
+}
+/* footer */
+
+/* liked quotes page */
+.outer-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+hr{
+    width: 200px;
+    border: 0.5px solid #292524;
+}
+.quote-text{
+    margin: 20px;
+    font-weight: lighter;
+}
+.liked-quotes-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.quote-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    position: relative;
+    margin-bottom: 30px;
+}
+.delete-icon{
+    width: 20px;
+    height: 20px;
+}
+.delete-btn {
+    background-color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.delete-btn:hover {
+    background-color: #d9342b;
+}
+.back-btn {
+    background-color: transparent;
+    color: white;
+    border: 2px solid #292524;
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: lighter;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+.back-btn:hover {
+    background-color: #292524;
+}
+.no-quotes {
+    text-align: center;
+    font-style: italic;
+    margin: 40px 0;
+}
+.quotes-list {
+    list-style-type: none;
+    padding: 0;
+}
+/* liked quotes page */
